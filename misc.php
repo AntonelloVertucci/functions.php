@@ -10,6 +10,7 @@ function print_menu_shortcode($atts, $content = null) {
     extract(shortcode_atts(array( 'name' => null, ), $atts));
     return wp_nav_menu( array( 'menu' => $name, 'echo' => false ) );
 }
+
 /*
     =============================================
     Add Post Name/Title in Body Class
@@ -22,6 +23,7 @@ function av_class_names( $classes )
     $classes[] = $post->post_name;
     return $classes;
 }
+
 /*
     =============================================
     Login error
@@ -35,6 +37,7 @@ function av_login_errors($error){
     }
     return $error;
 }
+
 /*
     =============================================
     Remove Wordpress Header Info
@@ -51,5 +54,15 @@ function sam_remove_header_info(){
     remove_action('wp_head', 'parent_post_rel_link', 10, 0); 
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head',10,0); 
 } 
+
+/*
+    =============================================
+    Remove 'noreferrer' from target blank links
+    =============================================
+*/
+add_filter('wp_targeted_link_rel', 'custom_wp_targeted_link_rel',999);
+function custom_wp_targeted_link_rel($rel_values) {
+    return 'noopener';
+}
 
 ?>
