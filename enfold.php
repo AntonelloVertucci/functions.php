@@ -56,4 +56,10 @@ function change_avia_date_format($date, $function) {
   return $output;
 }
 
+// Disable Portfolio 
+add_action('after_setup_theme', 'remove_portfolio');
+function remove_portfolio() {
+    remove_action('init', 'portfolio_register');
+}
+
 ?>
