@@ -2,6 +2,26 @@
 
 /*
     =============================================
+    Backend Footer
+    =============================================
+*/
+function my_footer_admin_left () {
+echo '<a target="_blank" href="http://www.neckarmedia.com"><img src="'. get_stylesheet_directory_uri() .'/img/n.png" width="30" height="30" alt="Neckarmedia Werbeagentur Heilbronn"></a> 
+    <span style="bottom: 8px;
+                  font-size: 15px;
+                  position: relative;
+                  left: 2px;
+                  color: #4c4c4d;
+                  letter-spacing: 3px;
+    ">
+    NECKARMEDIA 
+    <small style="color:red; font-size:11px; letter-spacing: 0">PHP '.PHP_VERSION.'</small> |  
+    <small style="color:blue; font-size:11px; letter-spacing: 0">WP '.get_bloginfo( "version" ).'</small></span>';
+}
+add_filter('admin_footer_text', 'my_footer_admin_left');
+
+/*
+    =============================================
     Call a navigation menu using a shortcode [menu name="MENUNAME"]
     =============================================
 */
