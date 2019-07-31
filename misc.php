@@ -5,7 +5,7 @@
     Backend Footer
     =============================================
 */
-function my_footer_admin_left () {
+function my_footer_admin_left (){
 echo '<a target="_blank" href="http://www.neckarmedia.com"><img src="'. get_stylesheet_directory_uri() .'/img/n.png" width="30" height="30" alt="Neckarmedia Werbeagentur Heilbronn"></a> 
     <span style="bottom: 8px;
                   font-size: 15px;
@@ -25,31 +25,31 @@ add_filter('admin_footer_text', 'my_footer_admin_left');
     Call a navigation menu using a shortcode [menu name="MENUNAME"]
     =============================================
 */
-add_shortcode('menu', 'print_menu_shortcode');
-function print_menu_shortcode($atts, $content = null) {
+function print_menu_shortcode($atts, $content = null){
     extract(shortcode_atts(array( 'name' => null, ), $atts));
     return wp_nav_menu( array( 'menu' => $name, 'echo' => false ) );
 }
+add_shortcode('menu', 'print_menu_shortcode');
+
 
 /*
     =============================================
     Add Post Name/Title in Body Class
     =============================================
 */
-add_filter('body_class', 'av_class_names');
-function av_class_names( $classes ) 
-{
+function av_class_names( $classes ){
     global $post;
     $classes[] = $post->post_name;
     return $classes;
 }
+add_filter('body_class', 'av_class_names');
+
 
 /*
     =============================================
     Login error
     =============================================
 */
-add_filter('login_errors', 'av_login_errors');
 function av_login_errors($error){
     $pos = strpos($error, 'incorrect');
     if (is_int($pos)){
@@ -57,13 +57,14 @@ function av_login_errors($error){
     }
     return $error;
 }
+add_filter('login_errors', 'av_login_errors');
+
 
 /*
     =============================================
     Remove Wordpress Header Info
     =============================================
 */
-add_action('init', 'sam_remove_header_info');
 function sam_remove_header_info(){ 
     remove_action('wp_head', 'feed_links_extra', 3); 
     remove_action('wp_head', 'rsd_link'); 
@@ -74,15 +75,17 @@ function sam_remove_header_info(){
     remove_action('wp_head', 'parent_post_rel_link', 10, 0); 
     remove_action('wp_head', 'adjacent_posts_rel_link_wp_head',10,0); 
 } 
+add_action('init', 'sam_remove_header_info');
+
 
 /*
     =============================================
     Remove 'noreferrer' from target blank links
     =============================================
 */
-add_filter('wp_targeted_link_rel', 'custom_wp_targeted_link_rel',999);
-function custom_wp_targeted_link_rel($rel_values) {
+function custom_wp_targeted_link_rel($rel_values){
     return 'noopener';
 }
+add_filter('wp_targeted_link_rel', 'custom_wp_targeted_link_rel',999);
 
 ?>
