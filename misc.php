@@ -20,6 +20,15 @@ echo '<a target="_blank" href="http://www.neckarmedia.com"><img src="'. get_styl
 }
 add_filter('admin_footer_text', 'my_footer_admin_left');
 
+
+/*
+    =============================================
+    Disable XML-RPC
+    =============================================
+*/
+add_filter('xmlrpc_enabled', '__return_false');
+
+
 /*
     =============================================
     Call a navigation menu using a shortcode [menu name="MENUNAME"]
@@ -88,4 +97,4 @@ function custom_wp_targeted_link_rel($rel_values){
 }
 add_filter('wp_targeted_link_rel', 'custom_wp_targeted_link_rel',999);
 
-?>
+
