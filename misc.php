@@ -6,7 +6,7 @@
     =============================================
 */
 function my_footer_admin_left (){
-echo '<a target="_blank" href="http://www.neckarmedia.com"><img src="'. get_stylesheet_directory_uri() .'/img/n.png" width="30" height="30" alt="Neckarmedia Werbeagentur Heilbronn"></a> 
+echo '<img src="'. get_stylesheet_directory_uri() .'/img/n.png" width="30" height="30" alt="Neckarmedia Werbeagentur Heilbronn"> 
     <span style="bottom: 8px;
                   font-size: 15px;
                   position: relative;
