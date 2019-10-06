@@ -42,9 +42,11 @@ add_shortcode('menu', 'print_menu_shortcode');
     =============================================
 */
 function av_class_names( $classes ){
-    global $post;
-    $classes[] = $post->post_name;
-    return $classes;
+    if ( !is_404() ){
+        global $post;
+        $classes[] = $post->post_name;
+        return $classes;
+    }else return $classes;
 }
 add_filter('body_class', 'av_class_names');
 
