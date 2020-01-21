@@ -66,4 +66,20 @@ function remove_portfolio(){
 }
 add_action('after_setup_theme', 'remove_portfolio');
 
-?>
+/* Disable Enfold Image generation */
+function ava_image_sizes(){ 
+    remove_image_size('masonry');
+    remove_image_size('magazine');
+    remove_image_size('widget');
+    remove_image_size('featured');
+    remove_image_size('featured_large');
+    remove_image_size('extra_large');
+    remove_image_size('portfolio_small');
+    remove_image_size('gallery');
+    remove_image_size('entry_with_sidebar');
+    remove_image_size('entry_without_sidebar');
+    remove_image_size('square');
+}
+add_action( 'after_setup_theme', 'ava_image_sizes', 11 );
+
+
