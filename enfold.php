@@ -82,4 +82,16 @@ function ava_image_sizes(){
 }
 add_action( 'after_setup_theme', 'ava_image_sizes', 11 );
 
+/* Hide editor info */
+function remove_ALB_post_state( $post_states, $post ){
+	if("! has_blocks( $post->ID )") {
+		unset($post_states['wp_editor']);
+	}
+	if("!= Avia_Builder()->get_alb_builder_status($post->ID)") {
+		unset($post_states['avia_alb']);
+	}
+return $post_states;
+}
+add_filter('display_post_states','remove_ALB_post_state',999,2);
+
 
