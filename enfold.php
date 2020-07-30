@@ -70,7 +70,6 @@ add_action('after_setup_theme', 'remove_portfolio');
 function ava_image_sizes(){ 
     remove_image_size('masonry');
     remove_image_size('magazine');
-    remove_image_size('widget');
     remove_image_size('featured');
     remove_image_size('featured_large');
     remove_image_size('extra_large');
