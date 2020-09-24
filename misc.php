@@ -14,6 +14,19 @@ echo '
 }
 add_filter('admin_footer_text', 'my_footer_admin_left');
 
+/*
+    =============================================
+    Hide Updates notification in WP Backend
+    =============================================
+*/
+function nm_backend_css() {
+  echo '<style>
+        .update-nag,
+        .update-plugins{display: none !important}
+        </style>';
+}
+add_action('admin_head', 'nm_backend_css');
+
 
 /*
     =============================================
